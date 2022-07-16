@@ -70,6 +70,11 @@ public class DvdDaoImpl implements DvdDao{
         return removedDvd;
     }
 
+    /**
+     * Helper method to convert input text from the file to a dvd object.
+     * @param dvdAsText the line taken from the collection file containing all dvd's
+     * @return a dvd object consisting of the data from the input line.
+     */
     private Dvd unmarshallDvd(String dvdAsText){
         String[] dvdTokens = dvdAsText.split(",");
         
@@ -90,6 +95,9 @@ public class DvdDaoImpl implements DvdDao{
         return dvd;
     }
 
+    /**
+     * Function to read the collection file and save it to the map
+     */
     private void loadCollection(){
         Scanner input = null;
 
@@ -111,6 +119,11 @@ public class DvdDaoImpl implements DvdDao{
         input.close();
     }
 
+    /**
+     * Helper method that converts dvd data into a string and returns it.
+     * @param dvd the dvd object we want to convert to a string.
+     * @return a string containing the dvd object.
+     */
     private String marshallDvd(Dvd dvd){
         String dvdText = dvd.getDvdId() + ",";
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
@@ -124,6 +137,9 @@ public class DvdDaoImpl implements DvdDao{
         return dvdText;
     }
 
+    /**
+     * Function to write the data from a map to the collection file.
+     */
     private void writeCollection(){
         PrintWriter output = null;
 

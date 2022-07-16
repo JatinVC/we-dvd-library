@@ -10,6 +10,10 @@ import com.mthree.dto.Dvd;
 public class DvdView {
     private UserIO io = new UserIOConsoleImpl();
 
+    /**
+     * print the menu and get the selection from the user.
+     * @return an integer representing the menu choice.
+     */
     public int printMenuAndGetSelection() {
         io.print("Main Menu");
         io.print("1. List Dvd's");
@@ -22,6 +26,11 @@ public class DvdView {
         return io.readInt("Please select from the above choices.", 1, 6);
     }
 
+    /**
+     * Get information from a new dvd and return the new dvd object.
+     * @return a dvd object containing the new information.
+     * @throws ParseException
+     */
     public Dvd getDvdInfo() throws ParseException{
         int dvdId = io.readInt("Please enter the dvd id");
         String title = io.readString("Please enter the title of the dvd");
@@ -36,10 +45,17 @@ public class DvdView {
         return newDvd;
     }
 
+    /**
+     * function to print succesful create message.
+     */
     public void printCreateSuccessBanner(){
         io.print("=== Added New DVD ===");
     }
 
+    /**
+     * Display information about all dvds in an ordered manner.
+     * @param dvds list of all dvd's
+     */
     public void displayAllDvds(List<Dvd> dvds){
         for(Dvd dvd : dvds){
             String dvdInfo = String.format("%s : \n Director: %s \n Studio : %s \n Release Date: %s \n MPAA Rating: %s \n Personal Rating: %s",
@@ -54,10 +70,17 @@ public class DvdView {
         io.readString("Press enter to continue");
     }
 
+    /**
+     * display all dvd message.
+     */
     public void displayAllBanner(){
         io.print("=== Display all Dvds ===");
     }
 
+    /**
+     * display information about one dvd.
+     * @param dvd dvd object.
+     */
     public void displayDvd(Dvd dvd){
         String dvdInfo = String.format("%s : \n Director: %s \n Studio : %s \n Release Date: %s \n MPAA Rating: %s \n Personal Rating: %s",
             dvd.getTitle(),
@@ -71,14 +94,25 @@ public class DvdView {
         io.readString("Press enter to continue");
     }
 
+    /**
+     * display dvd info message.
+     */
     public void displayDvdBanner(){
         io.print("=== Display Dvd Info ===");
     }
 
+    /**
+     * display remove message.
+     */
     public void displayRemoveBanner(){
         io.print("=== Remove Dvd ===");
     }
 
+    /**
+     * Display result of remove dvd operation. if the inputted parameter
+     * is null, the dvd was removed, else it wasn't.
+     * @param dvd dvd that was removed
+     */
     public void displayRemoveResult(Dvd dvd){
         if(dvd != null){
             io.print("Dvd was successfully removed");
@@ -88,10 +122,18 @@ public class DvdView {
         io.readString("Please hit enter to continue");
     }
 
+    /**
+     * get the dvd id from the user.
+     * @return the dvd id.
+     */
     public int getDvdIdChoice(){
         return io.readInt("Please enter the dvd id");
     }
 
+    /**
+     * print menu for editing dvd and return the users choice.
+     * @return an integer with the users choice.
+     */
     public int printEditMenuAndGetSelection() {
         io.print("Main Menu");
         io.print("1. Edit title");
@@ -105,6 +147,12 @@ public class DvdView {
         return io.readInt("Please select from the above choices.", 1, 7);
     }
 
+    /**
+     * Edit dvd and return edited dvd.
+     * @param oldDvd the dvd to be edited.
+     * @return the edited dvd.
+     * @throws ParseException
+     */
     public Dvd getEditedDvd(Dvd oldDvd) throws ParseException{
         int choice = 0;
 
@@ -153,6 +201,9 @@ public class DvdView {
         return oldDvd;
     }
 
+    /**
+     * Print successful edit message.
+     */
     public void printEditSuccessBanner() {
         io.print("=== SUCCESSFUL EDIT ===");
     }
